@@ -15,19 +15,19 @@ import com.estacioname.servicios.UsuarioServicio;
 @RestController
 @RequestMapping("/usr")
 public class UsuarioWS {
-	
+
 	@Autowired
 	UsuarioServicio us;
-	
+
 	@GetMapping("/bienvenida")
 	public String Mensaje() {
 		return "Portal estacioname";
 	}
-	
-	@PostMapping("/usuario")// el post es para insertar
-	public ResponseEntity<Usuario> insertar(@RequestBody Usuario usr){
+
+	@PostMapping("/usuario") // el post es para insertar
+	public ResponseEntity<Usuario> insertar( Usuario usr) {
 		Usuario resultado = us.crear(usr);
-		return new ResponseEntity<Usuario>(resultado,HttpStatus.OK);
+		return new ResponseEntity<Usuario>(resultado, HttpStatus.OK);
 	}
 
 }

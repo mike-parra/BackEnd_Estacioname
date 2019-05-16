@@ -9,48 +9,52 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
-import com.estacioname.modelos.Usuario;
+import com.estacioname.modelos.Cajon;
 
 @Repository
-public class UsuarioJDBC implements UsuarioDAO {
-
+public class CajonJDBC implements CajonDAO {
+	
 	@Autowired
 	JdbcTemplate conexion;
 
 	String sql = "";
 
 	@Override
-	public int insertar(Usuario usr) {
+	public List<Cajon> consultar() {
+		// TODO Auto-generated method stub
+		sql = "SELECT * FROM cajon";
+		return conexion.query(sql, new CajonRM());
+	}
+
+	@Override
+	public Cajon buscar(int id) {
+		// TODO Auto-generated method stub
+		sql = "SELECT * FROM cajon WHERE idCajon=?";
+		return conexion.queryForObject(sql, new CajonRM(), id);
+	}
+
+	@Override
+	public int insertar(Cajon c) {
 		// TODO Auto-generated method stub
 		SimpleJdbcInsert insert = new SimpleJdbcInsert(conexion);
 		List<String> columnas = new ArrayList<>();
-		columnas.add("Nombre");
-		columnas.add("Correo");
-		columnas.add("Contraseña");
-		insert.setTableName("usuario");
+		columnas.add("idCajon");
+		columnas.add("estado");
+		insert.setTableName("cajon");
 		insert.setColumnNames(columnas);
 		Map<String, Object> datos = new HashMap<>();
-		datos.put("Nombre", usr.getNombre());
-		datos.put("Correo", usr.getCorreo());
-		datos.put("Contraseña", usr.getContraseña());
+		datos.put("idCajon", c.getId());
+		datos.put("estado", c.getEstado());
 		insert.setGeneratedKeyName("id");
 		Number idNumber = insert.executeAndReturnKey(datos);
 		return idNumber.intValue();
 	}
 
 	@Override
-	public void actualizar(Usuario usr) {
+	public void actualizar(Cajon c) {
 		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-		sql = "UPDATE usuario SET Contraseña = ? WHERE id = ?";
-		conexion.update(sql, usr.getContraseña());
-	}
 
-	@Override
-	public void borrar(int id) {
-		// TODO Auto-generated method stub
 	}
 
 }
