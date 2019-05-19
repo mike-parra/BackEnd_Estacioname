@@ -19,12 +19,7 @@ public class UsuarioWS {
 	@Autowired
 	UsuarioServicio us;
 
-	@GetMapping("/bienvenida")
-	public String Mensaje() {
-		return "Portal estacioname";
-	}
-
-	@PostMapping("/usuario") // el post es para insertar
+	@PostMapping("/registrar") //registrar un usuario
 	public ResponseEntity<Usuario> insertar( Usuario usr) {
 		Usuario resultado = us.crear(usr);
 		return new ResponseEntity<Usuario>(resultado, HttpStatus.OK);

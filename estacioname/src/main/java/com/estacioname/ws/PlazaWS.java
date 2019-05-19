@@ -20,11 +20,6 @@ public class PlazaWS {
 	@Autowired
 	PlazaServicio s;
 
-	@GetMapping("/bienvenida")
-	public String Mensaje() {
-		return "Portal estacioname";
-	}
-
 	@GetMapping("/{id}")
 	public ResponseEntity<Plaza> buscar(@PathVariable int id) {
 		Plaza resultado = s.buscar(id);

@@ -19,11 +19,6 @@ public class CajonWS {
 	
 	@Autowired
 	CajonServicio s;
-
-	@GetMapping("/bienvenida")
-	public String Mensaje() {
-		return "Portal estacioname";
-	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Cajon> buscar(@PathVariable int id) {

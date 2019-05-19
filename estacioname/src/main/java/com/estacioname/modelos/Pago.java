@@ -3,9 +3,9 @@ package com.estacioname.modelos;
 public class Pago {
 
 	private int id, idUsuario, idPlaza;
-	private String Descripcion;
-	private int Monto;
-	private String Tiempo;
+	private String descripcion;
+	private int monto;
+	private String tiempo;
 
 	public Pago() {
 		super();
@@ -17,9 +17,9 @@ public class Pago {
 		this.id = id;
 		this.idUsuario = idUsuario;
 		this.idPlaza = idPlaza;
-		Descripcion = descripcion;
-		Monto = monto;
-		Tiempo = tiempo;
+		this.descripcion = descripcion;
+		this.monto = monto;
+		this.tiempo = tiempo;
 	}
 
 	public int getId() {
@@ -47,27 +47,27 @@ public class Pago {
 	}
 
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		descripcion = descripcion;
 	}
 
 	public int getMonto() {
-		return Monto;
+		return monto;
 	}
 
 	public void setMonto(int monto) {
-		Monto = monto;
+		monto = monto;
 	}
 
 	public String getTiempo() {
-		return Tiempo;
+		return tiempo;
 	}
 
 	public void setTiempo(String tiempo) {
-		Tiempo = tiempo;
+		tiempo = tiempo;
 	}
 
 }

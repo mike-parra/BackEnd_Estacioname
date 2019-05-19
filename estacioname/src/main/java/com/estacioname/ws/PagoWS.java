@@ -22,14 +22,8 @@ public class PagoWS {
 	
 	@Autowired
 	PagoServicio s;
-	
 
-	@GetMapping("/mensaje")
-	public String Mensaje() {
-		return "Hola WS";
-	}
-
-	@GetMapping("/listar")//el get es para consultar
+	@GetMapping("/listar")
 	public ResponseEntity<List<Pago>> consultar() {
 		List<Pago> resultado = s.consultar();
 		if (resultado.isEmpty()) 
@@ -49,7 +43,7 @@ public class PagoWS {
 		
 	}
 	
-	@PostMapping("/clientes")// el post es para insertar
+	@PostMapping("/registrar")// el post es para insertar
 	public ResponseEntity<Pago> insertar( Pago p){
 		Pago resultado = s.crear(p);
 		return new ResponseEntity<Pago>(resultado,HttpStatus.OK);
